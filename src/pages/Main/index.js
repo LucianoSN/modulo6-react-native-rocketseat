@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
-import { Keyboard, Text } from 'react-native';
+import { Keyboard } from 'react-native';
 import api from '../../services/api';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import { Container, Form, Input, SubmitButton, List } from './styles';
+import {
+	Container,
+	Form,
+	Input,
+	SubmitButton,
+	List,
+	User,
+	Avatar,
+	Name,
+	Bio,
+	ProfileButton,
+	ProfileButtonText,
+} from './styles';
 
 export default class Main extends Component {
 	state = {
@@ -32,7 +44,7 @@ export default class Main extends Component {
 	};
 
 	render() {
-		const { newUser } = this.state;
+		const { users, newUser } = this.state;
 		return (
 			<Container>
 				<Form>
@@ -55,11 +67,13 @@ export default class Main extends Component {
 					keyExtractor={user => user.login}
 					renderItem={({ item }) => (
 						<User>
-							<Avatar source={{ uri: item.avatar }} />>
+							<Avatar source={{ uri: item.avatar }} />
 							<Name>{item.name}</Name>
 							<Bio>{item.bio}</Bio>
 							<ProfileButton onPress={() => {}}>
-								<Text>Enviar</Text>
+								<ProfileButtonText>
+									Ver perfil
+								</ProfileButtonText>
 							</ProfileButton>
 						</User>
 					)}
